@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  padding: 1rem;
+  background-color: #000000;
+}
+.header__logo {
+  font-size: 2rem;
+  font-weight: 900;
+}
+.header__body {
+  display: flex;
+  align-items: center;
+}
+.header__image {
+  height: 2rem;
+  margin: 0 0 0 1rem;
+}

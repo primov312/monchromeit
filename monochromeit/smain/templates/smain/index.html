@@ -1,0 +1,33 @@
+{% extends 'smain/base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'smain/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="content">
+        <h2 class="content__discription t2">Welcome to “monchrome it” ! Here you can turn your photo to black and white mode. First upload your file by clicking on “CHOOSE FILE” and then press “Convert”</h2>
+        <form class="content__form form" action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.files }}
+            {{ form.text }}
+            <div class="content__images images">
+                <h2 class="images__title">Files to convert</h2>
+            </div>
+            <button class="form__btn t1">Convert</button>
+        </form>
+        {% if converted %}
+            <div class="content__converted converted">
+                {% for c in converted %}
+                <div class="converted__body">
+                    <img class="converted__img" src="{{ c }}" alt="">
+                    <a class="converted__link" href="{{ c }}" download="">Download</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section> 
+</div>
+<script src="{% static 'smain/js/getting_files.js' %}"></script>
+{% endblock %}
